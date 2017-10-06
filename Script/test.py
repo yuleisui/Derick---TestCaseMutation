@@ -2,20 +2,37 @@ import sys
 
 print('Testing Program')
 
-filename = sys.argv[1].split('.')
+file_name = sys.argv[1].split('.')
+copy_num = sys.argv[2]
+
+
 inc = 0
 
-with open(sys.argv[1], "r") as oldfile, open(filename[0]+'New.'+filename[1], "w") as newfile:
-    for line in oldfile.readlines():
+with open(sys.argv[1], "r") as old_file, open(file_name[0]+'New.'+file_name[1], "w") as new_file:
+    for line in old_file.readlines():
         #print line
         inc+=1
-        newfile.write(line)
+        new_file.write(line)
         
     print(str(inc)+' lines')
-    oldfile.close()
-    newfile.close()  
-      
+    old_file.close()
+    new_file.close()  
+
+
+
 #python commenting
 
 
-#Start
+#Gather Data
+#Open test case (java)
+#Read test case
+    #Collect test case data
+        #Line
+        #Number of case data
+
+#Create modified test case.
+    #Copy Alias stubs
+    #Copy import/package
+    #Modify test case based on criteria
+
+#Setting some goals
