@@ -90,10 +90,10 @@ def analyse_code(code,test_case_name): #grab test_case information for later use
 # Use dictionary hashtable for mutation
 # Alternate method of applying combinations to mutations in python
 def hash_mutation(curr_muta, mut_list):
-    #bin_curr_muta = bin(int(curr_muta,2)) # Convert existing mutation code to binary
     combination_hash = {}
-    combination_list = ["".join(seq) for seq in itertools.product("01", repeat=pow(2,len(mut_list)-1))] # get all combinations of binary string literal
-    #print ("combination_list:", combination_list)
+    print mut_list
+    combination_list = ["".join(seq) for seq in itertools.product("01", repeat=len(mut_list))] 
+    # get all combinations of binary string literal
     
     # for every combination (11, 10, 01) etc)
     for binary in combination_list:
@@ -102,7 +102,7 @@ def hash_mutation(curr_muta, mut_list):
             new_curr_muta = curr_muta #Clone list   
             inner_mut_element = 0
             for char in list(binary):
-                print("char:",char, binary)
+                #print("char:",char, binary)
                 if char == '1':
                     new_curr_muta[inner_mut_element][1] = re.sub('notAlias','mayAlias',new_curr_muta[inner_mut_element][1])
                 elif char == '0':
@@ -110,7 +110,6 @@ def hash_mutation(curr_muta, mut_list):
                 inner_mut_element+=1
             combination_hash[binary] = copy.deepcopy(new_curr_muta)
             
-            #print combination_hash
     #print ("combination_hash:", combination_hash)
     return combination_hash    
 
@@ -144,7 +143,7 @@ else:
             with new_file:
                 #for each line
                 line_inc = 1
-                print mut_combination
+                #print mut_combination
                 for line in code:
                     mut_flag = 0
                     inst_flag = 0     
@@ -158,25 +157,25 @@ else:
                         for inst_line in instant_list:
                             if line_inc == inst_line[0]:
                                 new_file.write(name_replace(new_filename.split('.')[0],inst_line[1]))
-                                print(inst_line[1])
-                                print(line_inc,'inst')
+                                #print(inst_line[1])
+                                #print(line_inc,'inst')
                                 inst_flag = 1
                                 break
                         for mut_line in mutation_dict.get(mut_combination):
                             #for each value in mutation_dict
                             if line_inc == mut_line[0]:
                                 new_file.write(mut_line[1])
-                                print(line_inc,'mut')
+                                #print(line_inc,'mut')
                                 mut_flag = 1
                                 break
                     #print(mut_flag,inst_flag)            
                     if mut_flag == 0 and inst_flag == 0:
                         new_file.write(line)
-                        print(line_inc,'norm')
+                        #print(line_inc,'norm')
                     #print mut_combination
                     line_inc+=1         
             
-            print mutation_dict[mut_combination]
+            #print mutation_dict[mut_combination]
             
 
 
