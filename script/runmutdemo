@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for d in $1 ; 
+    do if [ "$d" != utils]; then 
+    for f in *.py;
+        do python $2 "$f";
+        done
+    done
+    
+#/home/derick/druid1009-test/druid/tests/pta/*
