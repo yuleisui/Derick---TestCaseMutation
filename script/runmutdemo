@@ -2,11 +2,12 @@
 
 for d in $1 
 do
-    if ["$d" != 'utils'] then 
+    if [ "$d" != 'utils' ]; then 
     for f in *.py
     do 
-        python $2 "$f"
+        python "$2" "$f"
     done
+    fi
 done
     
 #/home/derick/druid1009-test/druid/tests/pta/*
