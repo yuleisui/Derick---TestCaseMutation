@@ -60,7 +60,7 @@ def analyse_code(code,test_case_name): #grab test_case information for later use
             match_notAlias = re.search("^\s*notAlias\(\w+,\w+\)",line) # Regex for notAlias/negative check.
                    
             if match_class: # get class_name
-                $class_name = match_class.group(2)
+                class_name = match_class.group(2)
                 #new_file_list.append([line_count,'class:'+class_name])
                 new_file_list.append([line_count, line])
                 print match_class.group()

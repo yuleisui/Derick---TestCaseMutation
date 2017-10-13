@@ -1,10 +1,14 @@
 #!/bin/bash
 
-for d in /home/derick/druid/1009-test/druid/tests/pta/* 
+filepath="/$HOME/derick/druid/1009-test/druid/tests/pta/*"
+
+for d in $filepath 
 do
-if [ "$d" != 'utils' ]; then 
-    new = "/home/derick/druid/1009-test/druid/tests/pta/$d"
-for f in new
+if [ "$d"!='utils' ]; then 
+    newline="/home/derick/druid/1009-test/druid/tests/pta/$d/*"
+    echo $newline
+    echo "ok"
+for f in newline
 do 
        # if [ "$f" == *.java ]; then
 python test.py "$f"
