@@ -9,7 +9,7 @@ import copy
 print('Testing Program \n#python test.py "test_case_filepath" [-syn syn_test_case_file_path copy_num]')
 
 test_case_name = sys.argv[1].split('.') 
-class_name = test_case_name[0]
+#class_name = test_case_name[0]
 
 syn_flag = False
 testre_flag = False
@@ -60,7 +60,7 @@ def analyse_code(code,test_case_name): #grab test_case information for later use
             match_notAlias = re.search("^\s*notAlias\(\w+,\w+\)",line) # Regex for notAlias/negative check.
                    
             if match_class: # get class_name
-                #class_name = match_class.group(2)
+                class_name = match_class.group(2)
                 #new_file_list.append([line_count,'class:'+class_name])
                 new_file_list.append([line_count, line])
                 print match_class.group()
