@@ -1,13 +1,16 @@
 #!/bin/bash
 
-for d in $1 
+for d in /home/derick/druid/1009-test/druid/tests/pta/* 
 do
-    if [ "$d" != 'utils' ]; then 
-    for f in *.py
-    do 
-        python "$2" "$f"
-    done
-    fi
+if [ "$d" != 'utils' ]; then 
+    new = "/home/derick/druid/1009-test/druid/tests/pta/$d"
+for f in new
+do 
+       # if [ "$f" == *.java ]; then
+python test.py "$f"
+	#fi
+done
+fi
 done
     
 #/home/derick/druid1009-test/druid/tests/pta/*
