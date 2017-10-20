@@ -1,20 +1,23 @@
 #!/bin/bash
 
-filepath="/$HOME/derick/druid/1009-test/druid/tests/pta/*"
+filepath=$1
 
-for d in $filepath 
+for d in $1/*/
 do
-if [ "$d"!='utils' ]; then 
-    newline="/home/derick/druid/1009-test/druid/tests/pta/$d/*"
-    echo $newline
-    echo "ok"
-for f in newline
-do 
-       # if [ "$f" == *.java ]; then
-python test.py "$f"
-	#fi
-done
+#echo $d
+if ! [[ "$d" =~ "$1/utils" ]]; then 
+
+    newline=$d
+    echo "folder filepath is $newline"
+
+    for f in $newline/*
+    do 
+	if [[ "$f" == *.java ]]; then
+	echo $f
+	#python test.py "$f"
+    fi
+    done
+
 fi
 done
     
-#/home/derick/druid1009-test/druid/tests/pta/*
