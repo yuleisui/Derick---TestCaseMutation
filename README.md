@@ -14,3 +14,7 @@ python test.py *testfile.java*
 python test.py *testfile.java* [-syn *synthesizedtestcase.java*]
 
 The second uses a custom class that stores information from the test case.
+
+Test Gif:
+
+![alt text](https://github.com/yuleisui/Derick---TestCaseMutation/blob/master/mutation.gif)
