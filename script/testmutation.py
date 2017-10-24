@@ -7,7 +7,7 @@ import itertools
 import copy
 import os.path
 
-print('test.py mutation script \n#python test.py "test_case_filepath" [-syn syn_test_case_file_path copy_num]')
+print('test.py mutation script \n#python test.py "test_case_filepath" [-re]')
 if len(sys.argv) <2:
     sys.exit()
 elif not os.path.isfile(sys.argv[1]):
@@ -44,6 +44,8 @@ line_inc = 0 #number of lines in original test_case
 new_file_list = []  #stores synthesis/mutation test_case information.
 instant_list = [] #stores class instantiation code from test case
 mutation_list = []  #stores only mayAlias/notAlias checks
+# mutation_list,instant_list stores custom class objects consisting of [line_number, code]
+
 
 argvlist = sys.argv
 def check_flag(argvlist): #check for input correctness (to be added later)
@@ -62,8 +64,8 @@ def analyse_code(code,class_name): #grab test_case information for later use
         if line.strip(): # Ignore empty lines
             match_class = re.search("(\w+\s)*class (\w+)", line)  # Find class name (Doesn't handle extends)
             match_instant = re.search("^\s*"+class_name[0]+" (\w+) =", line)
-            match_mayAlias = re.search("^\s*mayAlias\(\w+,\w+\)",line) # Regex for mayAlias/postive check.
-            match_notAlias = re.search("^\s*notAlias\(\w+,\w+\)",line) # Regex for notAlias/negative check.
+            match_mayAlias = re.search("^\s*mayAlias\(\s*\w+\s*,\w+\s*\)",line) # Regex for mayAlias/postive check.
+            match_notAlias = re.search("^\s*notAlias\(\s*\w+\s*,\s*\w+\s*\)",line) # Regex for notAlias/negative check.
                    
             if match_class: # get class_name
                 class_name = match_class.group(2)
@@ -82,10 +84,10 @@ def analyse_code(code,class_name): #grab test_case information for later use
                 mutation_list.append([line_count,line])
             
         line_count +=1 # Increment
-
     
     print ('mayAlias:'+str(mayAlias_count))
     print ('notAlias:'+str(notAlias_count))
+    print new_file_list
     return hash_mutation(mutation_list,new_file_list[0][0])
 
 # Use dictionary hashtable for mutation
@@ -93,16 +95,14 @@ def analyse_code(code,class_name): #grab test_case information for later use
 def hash_mutation(curr_muta, mut_list):
     combination_hash = {}
     combination_list = ["".join(seq) for seq in itertools.product("01", repeat=len(mut_list))] 
-    # get all combinations of binary string literal
+    # get all combinations of binary string literal via cartesian product function
     
-    # for every combination (11, 10, 01) etc)
     for binary in combination_list:
         if not binary == mut_list:
             # for every char (1,1 in 11)
             new_curr_muta = curr_muta #Clone list   
             inner_mut_element = 0
             for char in list(binary):
-                #print("char:",char, binary)
                 if char == '1':
                     new_curr_muta[inner_mut_element][1] = re.sub('notAlias','mayAlias',new_curr_muta[inner_mut_element][1])
                 elif char == '0':
@@ -126,12 +126,11 @@ if testre_flag is True: #RE debugger
 else:
     with open(sys.argv[1], "r") as old_file: #Code opens test case
 
-        #print('test cases created: '+ str(copy_num))
         code = old_file.readlines()
         
         mutation_dict = analyse_code(code,class_name)
         
-        print (str(len(mutation_list))+' combinations created')
+        print (str(len(mutation_dict))+' unique combinations created')
         #print new_file_list
         #print('currnum:'+str(curr_num)+', copy_num:'+str(copy_num))
         #iterate through combinations, create new file for each combination
@@ -158,7 +157,6 @@ else:
                         for inst_line in instant_list:
                             if line_inc == inst_line[0]:
                                 new_file.write(name_replace(new_filename.split('.')[0],inst_line[1]))
-                                #print(inst_line[1])
                                 #print(line_inc,'inst')
                                 inst_flag = 1
                                 break
@@ -178,48 +176,3 @@ else:
             
             #print mutation_dict[mut_combination]            
 
-
-#6: Goal.  Modify test case in (meaningful) manner that can be parsed by black-box points-to analyser.
-# Simple modifier without need for synthesis.  Combinatinon Mutation using MayAlias and NotAlias.
-
-# Identify which code line to mark for editing.
-# Store information on what to edit in test case
-
-
-
-
-# Task: generate a copy of the test code.
-# Breakdown test case code. Collect important indentifiers.
-    # Class name
-    # Suite of points-to tests
-
-
-#Gather Data
-#Open test case (java)
-#Read test case
-    #Collect test case data
-        #Line
-        #Number of case data
-
-#Create modified test case.
-    #Copy Alias stubs
-    #Copy import/package
-    #Modify test case based on criteria
-
-
-        
-#print keyutils.read_privkey_from_pem(sprk)
-#print keyutils.read_subject(scert)
-#print keyutils.read_subject(ca)
-#sprint len(re.findall(r'/CN=minissl-SERVER/',str(keyutils.read_subject(scert)))) 
-#cnpattern = re.compile('/CN[.]*/')
-#print keyutils.read_issuer(scert)
-#print keyutils.read_notafter(ca)
-#print keyutils.read_notafter(scert)
-#print datetime.strptime(keyutils.read_notafter(scert),'%Y%m%d%H%M%SZ')
-#print datetime.now()
-#if datetime.now() < datetime.strptime(keyutils.read_notafter(scert),'%Y%m%d%H%M%SZ'):
-#    print '1'
-
-
-    
