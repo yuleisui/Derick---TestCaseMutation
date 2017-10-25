@@ -31,9 +31,10 @@ and.
 
 python testmutation.py *testfile.java* [-syn *synthesizedtestcase.java*]
 
-https://www.youtube.com/watch?v=HFtvkUCZm2Q
-
-https://www.youtube.com/watch?v=caxBAZsL-wQ
+Resources:
+Using Druid:
+[!(https://img.youtube.com/vi/TVYNOi4xpkI/0.jpg)](https://www.youtube.com/watch?v=TVYNOi4xpkI)
+https://youtu.be/
 
 Test Gif on using script:
 
