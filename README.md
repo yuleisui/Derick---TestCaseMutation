@@ -33,7 +33,7 @@ python testmutation.py *testfile.java* [-syn *synthesizedtestcase.java*]
 
 Resources:
 Using Druid:
-[!(https://img.youtube.com/vi/TVYNOi4xpkI/0.jpg)](https://www.youtube.com/watch?v=TVYNOi4xpkI)
+[![Druid Static Analyser](https://img.youtube.com/vi/TVYNOi4xpkI/0.jpg)](https://www.youtube.com/watch?v=TVYNOi4xpkI)
 https://youtu.be/
 
 Test Gif on using script:
