@@ -31,7 +31,11 @@ and.
 
 python testmutation.py *testfile.java* [-syn *synthesizedtestcase.java*]
 
+https://www.youtube.com/watch?v=HFtvkUCZm2Q
+
+https://www.youtube.com/watch?v=caxBAZsL-wQ
 
 Test Gif on using script:
+
 
 ![alt text](https://github.com/yuleisui/Derick---TestCaseMutation/blob/master/mutation.gif)
