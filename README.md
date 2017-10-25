@@ -13,7 +13,7 @@ runmutdemo - bash script to run testmutation.py on every .java file in subdirect
 mutatorstub.py - Test functions for generic and specific mutations.
 
 
-Current test.py script creates takes a .java test file that is compatible with the Druid static analyzer.
+Current testmutation.py script creates takes a .java test file that is compatible with the Druid static analyzer.
 
 It currently has two modes,
 
@@ -33,8 +33,7 @@ python testmutation.py *testfile.java* [-syn *synthesizedtestcase.java*]
 
 Resources:
 Using Druid:
-[![Druid Static Analyser](https://img.youtube.com/vi/TVYNOi4xpkI/0.jpg)](https://www.youtube.com/watch?v=TVYNOi4xpkI)
-https://youtu.be/
+[Druid Static Analyser in action](https://www.youtube.com/watch?v=TVYNOi4xpkI)
 
 Test Gif on using script:
 
