@@ -2,11 +2,7 @@ package pta.basic;
 
 import static pta.utils.Dummy.notAlias;
 
-/*
- * @testcase ReturnValue3
- * @description Alias to a return value from a static method
- */
-public class ReturnValue3-Mut101 {
+public class ReturnValue3-Mut111 {
 
   class A {
     Object f = new Object();
@@ -28,7 +24,7 @@ public class ReturnValue3-Mut101 {
     Object x = b.f;
     Object y = a.f;
     mayAlias(a,b);
-    notAlias(a,y);
+    mayAlias(a,y);
     mayAlias(b,y);
   }
 }

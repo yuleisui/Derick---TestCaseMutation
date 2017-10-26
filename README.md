@@ -36,7 +36,7 @@ Resources:
 Using Druid:
 [Druid Static Analyser in action](https://www.youtube.com/watch?v=TVYNOi4xpkI)
 
-[TestCaseMutation in action](https://www.youtube.com/watch?v=TVYNOi4xpkI)
+[TestCaseMutation in action](https://www.youtube.com/watch?v=wfjqtwx2Dhs)
 
 Test Gif on using script:
 

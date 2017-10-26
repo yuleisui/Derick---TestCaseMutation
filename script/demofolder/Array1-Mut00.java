@@ -3,7 +3,7 @@ package pta.collections;
 import static pta.utils.Dummy.mayAlias;
 import static pta.utils.Dummy.notAlias;
 
-public class Array1 {
+public class Array1-Mut00 {
 
   public static void main(String[] args) {
 
@@ -15,7 +15,7 @@ public class Array1 {
     array[1] = b;
     Object c = array[1];
     
-    mayAlias(c,b);
+    notAlias(c,b);
     notAlias(a,array);
   }
 }
