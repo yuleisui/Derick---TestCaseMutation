@@ -8,9 +8,10 @@ script/mutablecases - selected Druid-compatible test cases used in testing scrip
 script/mutatedcases - destination folder for mutated test cases.
 script/demofolder - examples of mutated test cases.
 
-testmutation.py - test mutation script
+
+classes/mutatorstub.py - Test functions for generic and specific mutations.
+testmutation.py - testmutation bash script
 runmutdemo - bash script to run testmutation.py on every .java file in subdirectories of current filepath, for testing purposes.
-mutatorstub.py - Test functions for generic and specific mutations.
 
 
 Current testmutation.py script creates takes a .java test file that is compatible with the Druid static analyzer.
@@ -34,6 +35,8 @@ python testmutation.py *testfile.java* [-syn *synthesizedtestcase.java*]
 Resources:
 Using Druid:
 [Druid Static Analyser in action](https://www.youtube.com/watch?v=TVYNOi4xpkI)
+
+[TestCaseMutation in action](https://www.youtube.com/watch?v=TVYNOi4xpkI)
 
 Test Gif on using script:
 
