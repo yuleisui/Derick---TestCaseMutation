@@ -7,7 +7,7 @@ import itertools
 import copy
 import os.path
 
-print('test.py mutation script \n#python test.py "test_case_filepath" [-re]')
+print('testmutation.py mutation script \n#python test.py "test_case_filepath" [-re]')
 if len(sys.argv) <2:
     sys.exit()
 elif not os.path.isfile(sys.argv[1]):
@@ -25,7 +25,7 @@ print len(sys.argv)
 if len(sys.argv) >= 3:
     if sys.argv[2] == "-syn":
         syn_flag = True #synthesis flag
-    elif sys.argv[2] == "-t": #testing RE code
+    elif sys.argv[2] == "-re": #testing RE code
         testre_flag = True
         syn_flag = False
     else:
